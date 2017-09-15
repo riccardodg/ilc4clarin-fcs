@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoint-config xmlns="http://www.clarin.eu/sru-server/1.0/">
+    <databaseInfo>
+        <title xml:lang="it">Risorse Linguistiche ospitate nel centro ILC4CLARIN</title>
+        <title xml:lang="en" primary="true">The ILC4CLARIN Language Resources</title>
+        <description xml:lang="it">Ricerca nell'archivio delle risorse linguistiche del centro ILC4CLARIN</description>
+        <description xml:lang="en" primary="true">Search in the ILC4CLARIN Language Resources.</description>
+        <author xml:lang="it">ILC4CLARIN eXist-Db</author>
+        <author xml:lang="en" primary="true">ILC4CLARIN eXist-Db</author>
+    </databaseInfo>
+    
+    <indexInfo>
+        <set name="fcs" identifier="http://clarin.eu/fcs/resource">
+            <title xml:lang="it">Clarin Ricerca di Contenuto</title>
+            <title xml:lang="en" primary="true">CLARIN Content Search</title>
+        </set>
+        <index search="true" scan="false" sort="false">
+            <title xml:lang="en" primary="true">Words</title>
+            <map primary="true">
+                <name set="fcs">words</name>
+            </map>
+        </index>
+    </indexInfo>
+    
+    <schemaInfo>
+        <schema identifier="http://clarin.eu/fcs/resource" name="fcs"
+                sort="false" retrieve="true">
+            <title xml:lang="en" primary="true">CLARIN Content Search</title>
+        </schema>
+    </schemaInfo>
+
+</endpoint-config>
