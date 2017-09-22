@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EndpointDescription xmlns="http://clarin.eu/fcs/endpoint-description"
+		     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		     xsi:schemaLocation="http://clarin.eu/fcs/endpoint-description ../../schema/Core_2/Endpoint-Description.xsd"
+		     version="2">
+  <Capabilities>
+    <Capability>http://clarin.eu/fcs/capability/basic-search</Capability>
+  </Capabilities>
+  <SupportedDataViews>
+    <SupportedDataView id="hits" delivery-policy="send-by-default">application/x-clarin-fcs-hits+xml</SupportedDataView>
+  </SupportedDataViews>
+  
+  <Resources>
+    <Resource pid="panacea">
+      <Title xml:lang="it">Corpus Panacea eXist-db demo</Title>
+      <Title xml:lang="en">Corpus Panacea eXist-db demo</Title>
+      <Description xml:lang="it">Corpus Panacea eXist-db demo</Description>
+      <Description xml:lang="en">Corpus Panacea eXist-db demo</Description>
+      <LandingPageURI>http://localhost:9090/exist/rest/db/panacea</LandingPageURI>
+      <Languages>
+        <Language>ita</Language>
+	<!--Language>fao</Language>
+	<Language>nld</Language>
+	<Language>som</Language>
+	<Language>spa</Language-->
+      </Languages>
+      <AvailableDataViews ref="hits"/>
+      
+    </Resource>
+  </Resources>
+</EndpointDescription>
