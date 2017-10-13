@@ -37,7 +37,8 @@
     </init-param>
     <init-param>
       <param-name>eu.clarin.sru.server.utils.sruServerSearchEngineClass</param-name>
-      <param-value>it.cnr.ilc.fcs.endpoint.existdb.ExistDbEndpointSearchEngine</param-value>
+      <param-value>it.cnr.ilc.ilc4clarin.fcs.endpoint.existdb.ExistDbEndpointSearchEngine</param-value>
+                   
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
