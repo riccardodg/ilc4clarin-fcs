@@ -8,6 +8,8 @@
  *  GNU General Public License v3
  */
 package it.cnr.ilc.ilc4clarin.fcs.endpoint.existdb;
+       
+
 
 
 import eu.clarin.sru.server.SRUConfigException;
@@ -24,6 +26,7 @@ import it.cnr.ilc.ilc4clarin.fcs.endpoint.existdb.data.json.pojo.info.ServiceInf
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.ServletContext;
@@ -81,7 +84,7 @@ public class ExistDbEndpointSearchEngine extends SimpleEndpointSearchEngineBase 
             SRUQueryParserRegistry.Builder queryParserBuilder,
             Map<String, String> params) throws SRUConfigException {
 	LOG.info("ExistDbEndpointSearchEngine::doInit {}", config.getPort());
-	//List<String> openCorpora = ServiceInfo.getModernCorpora();
+	List<String> existDbCorpora = ServiceInfo.getExistDbCorpora();
 	//openCorporaInfo = CorporaInfo.getCorporaInfo(openCorpora);
     }
 
