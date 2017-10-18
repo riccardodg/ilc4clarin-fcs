@@ -9,6 +9,9 @@
   <SupportedDataViews>
     <SupportedDataView id="hits" delivery-policy="send-by-default">application/x-clarin-fcs-hits+xml</SupportedDataView>
   </SupportedDataViews>
+  <SupportedLayers>
+    <SupportedLayer id="word" result-id="http://localhost:9090/exist/ilc4clarin/fcs/layer/word">text</SupportedLayer>
+  </SupportedLayers>
   
   <Resources>
     <Resource pid="panacea">
@@ -25,9 +28,10 @@
 	<Language>spa</Language-->
       </Languages>
       <AvailableDataViews ref="hits"/>
+      <AvailableLayers ref="word"/>
       
     </Resource>
-    <Resource pid="test">
+    <Resource pid="/db/ilc4clarin/data/test">
       <Title xml:lang="it">Corpus di Test eXist-db demo</Title>
       <Title xml:lang="en">Corpus Test eXist-db demo</Title>
       <Description xml:lang="it">Corpus Panacea eXist-db demo</Description>
@@ -41,6 +45,7 @@
 	<Language>spa</Language-->
       </Languages>
       <AvailableDataViews ref="hits"/>
+      <AvailableLayers ref="word"/>
       
     </Resource>
   </Resources>
