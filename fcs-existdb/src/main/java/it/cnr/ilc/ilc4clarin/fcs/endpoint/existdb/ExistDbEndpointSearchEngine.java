@@ -22,6 +22,7 @@ import eu.clarin.sru.server.SRUServerConfig;
 import eu.clarin.sru.server.fcs.EndpointDescription;
 import eu.clarin.sru.server.fcs.SimpleEndpointSearchEngineBase;
 import eu.clarin.sru.server.fcs.utils.SimpleEndpointDescriptionParser;
+import it.cnr.ilc.ilc4clarin.fcs.endpoint.existdb.data.json.pojo.info.CorporaInfo;
 import it.cnr.ilc.ilc4clarin.fcs.endpoint.existdb.data.json.pojo.info.ServiceInfo;
 import java.io.File;
 import java.net.MalformedURLException;
@@ -47,9 +48,14 @@ public class ExistDbEndpointSearchEngine extends SimpleEndpointSearchEngineBase 
     private static final int ED_VERSION = 2;
     private static final Logger LOG
             = LoggerFactory.getLogger(ExistDbEndpointSearchEngine.class);
+
+   
     protected EndpointDescription endpointDescription;
     public static final String RESOURCE_INVENTORY_URL
             = "se.gu.spraakbanken.fcs.korp.sru.resourceInventoryURL";
+    private List<String> existDbCorpora=new ArrayList<>();
+    
+    private static CorporaInfo corporaInfo;
 
     @Override
     protected EndpointDescription createEndpointDescription(
@@ -84,13 +90,41 @@ public class ExistDbEndpointSearchEngine extends SimpleEndpointSearchEngineBase 
             SRUQueryParserRegistry.Builder queryParserBuilder,
             Map<String, String> params) throws SRUConfigException {
 	LOG.info("ExistDbEndpointSearchEngine::doInit {}", config.getPort());
-	List<String> existDbCorpora = ServiceInfo.getExistDbCorpora();
-	//openCorporaInfo = CorporaInfo.getCorporaInfo(openCorpora);
+	existDbCorpora = ServiceInfo.getExistDbCorpora();
+	setCorporaInfo(CorporaInfo.getCorporaInfo(existDbCorpora));
     }
 
     @Override
     public SRUSearchResultSet search(SRUServerConfig srusc, SRURequest srur, SRUDiagnosticList srudl) throws SRUException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    /**
+     * @return the existDbCorpora
+     */
+    protected List<String> getExistDbCorpora() {
+        return existDbCorpora;
+    }
+
+    /**
+     * @param existDbCorpora the existDbCorpora to set
+     */
+    protected void setExistDbCorpora(List<String> existDbCorpora) {
+        this.existDbCorpora = existDbCorpora;
+    }
+    
+     /**
+     * @return the openCorporaInfo
+     */
+    public  CorporaInfo getCorporaInfo() {
+        return corporaInfo;
+    }
+
+    /**
+     * @param aOpenCorporaInfo the openCorporaInfo to set
+     */
+    public  void setCorporaInfo(CorporaInfo aOpenCorporaInfo) {
+        corporaInfo = aOpenCorporaInfo;
     }
 
 }
