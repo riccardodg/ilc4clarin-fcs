@@ -17,12 +17,17 @@ import eu.clarin.sru.server.utils.SRUServerServlet;
 import it.cnr.ilc.ilc4clarin.fcs.endpoint.existdb.data.json.pojo.info.Corpus;
 import it.cnr.ilc.ilc4clarin.fcs.endpoint.existdb.data.json.pojo.info.Resource;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.ServletException;
+import javax.xml.stream.XMLOutputFactory;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamWriter;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.eclipse.jetty.testing.ServletTester;
 import static org.junit.Assert.assertEquals;
@@ -96,7 +101,7 @@ public class ExistDbEndpointSearchEngineTest {
         existdbse.doInit(config, new SRUQueryParserRegistry.Builder().register(new FCSQueryParser()), params);
 
         assertNotNull(existdbse.getExistDbCorpora());
-        //printstuff();
+        printstuff();
 
 	assertNotNull(existdbse.getCorporaInfo());
 	//assertNotNull(existdbse.getCorporaInfo().getCorpus("/db/ilc4clarin/data/panacea"));
@@ -126,20 +131,39 @@ public class ExistDbEndpointSearchEngineTest {
     }
 
     @Test
+    public void testBoolean() throws SRUConfigException {
+	System.out.println("test for parsing boolean " +ExistDbEndpointSearchEngine.parseBoolean("2"));
+    }
+    
+//     @Test
+//    public void writeEP() throws SRUConfigException, XMLStreamException, IOException {
+//        System.out.println("test for end point ");
+//        XMLOutputFactory xof = XMLOutputFactory.newInstance();
+//        XMLStreamWriter xtw = null;
+//        xtw = xof.createXMLStreamWriter(new FileWriter("/tmp/ep.xml"));
+//        
+//	existdbse.writeEndpointDescription(xtw);
+//    }
+    
+    
+    @Test
     public void getResourcesFromDescription() throws SRUException {
-       System.out.println("ES "+sed.getResourceList("panacea"));
-//	List<ResourceInfo> riList = sed.getResourceList("aa");
-//	//System.out.println(riList.get(0).getTitle());
-//	assertEquals("hits", riList.get(0).getAvailableDataViews().get(0).getIdentifier());
-//	assertEquals("SEND_BY_DEFAULT", riList.get(0).getAvailableDataViews().get(0).getDeliveryPolicy().toString());
-//	assertEquals("application/x-clarin-fcs-hits+xml", riList.get(0).getAvailableDataViews().get(0).getMimeType());
-//	assertEquals("http://localhost:9090/exist/rest/db/ilc4clarin/data/panacea", riList.get(0).getLandingPageURI());
-//	assertTrue(riList.get(0).hasAvailableLayers());
-//	assertEquals("word", riList.get(0).getAvailableLayers().get(0).getId());
-//	assertEquals("text", riList.get(0).getAvailableLayers().get(0).getType());
-//	assertNull(riList.get(0).getAvailableLayers().get(0).getQualifier());
-//	assertEquals("it", riList.get(0).getLanguages().get(0));
-//	assertFalse(riList.get(0).hasSubResources());
+//        List<ResourceInfo> riListTot = sed.getResourceList("/db/ilc4clarin/data");
+//        List<ResourceInfo> riListPan = sed.getResourceList("/db/ilc4clarin/data/panacea");
+//      
+//        printResList(riListTot);
+	List<ResourceInfo> riList = sed.getResourceList("/db/ilc4clarin/data");
+	System.out.println(riList.get(0).getTitle());
+	assertEquals("hits", riList.get(0).getAvailableDataViews().get(0).getIdentifier());
+	assertEquals("SEND_BY_DEFAULT", riList.get(0).getAvailableDataViews().get(0).getDeliveryPolicy().toString());
+	assertEquals("application/x-clarin-fcs-hits+xml", riList.get(0).getAvailableDataViews().get(0).getMimeType());
+	assertEquals("http://localhost:9090/exist/rest/db/ilc4clarin/data/panacea", riList.get(0).getLandingPageURI());
+	assertTrue(riList.get(0).hasAvailableLayers());
+	assertEquals("word", riList.get(0).getAvailableLayers().get(0).getId());
+	assertEquals("text", riList.get(0).getAvailableLayers().get(0).getType());
+	assertNull(riList.get(0).getAvailableLayers().get(0).getQualifier());
+	assertEquals("ita", riList.get(0).getLanguages().get(0));
+	assertFalse(riList.get(0).hasSubResources());
     }
 
     protected void printstuff() {
@@ -173,6 +197,12 @@ public class ExistDbEndpointSearchEngineTest {
         System.err.println("CORPORA END");
         
         System.err.println("CORPORA WITH HEY /db/ilc4clarin/data/panacea " +existdbse.getCorporaInfo().getCorpus("/db/ilc4clarin/data/panacea"));
+    }
+
+    private void printResList(List<ResourceInfo> riList) {
+        for (ResourceInfo ri:riList){
+            System.err.println(" "+ri.getPid());
+        }
     }
 
 }
