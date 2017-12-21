@@ -126,7 +126,7 @@ public class ExistDbEndpointSearchEngineTest {
     @Test
     public void getLayersFromDescription() throws SRUConfigException {
 	System.out.println(sed.getSupportedLayers());
-	assertEquals("http://localhost:9090/exist/ilc4clarin/fcs/layer/word", sed.getSupportedLayers().get(0).getResultId().toString());
+	assertEquals("http://existdb.ilc4clarin.ilc.cnr.it/exist/ilc4clarin/fcs/layer/word", sed.getSupportedLayers().get(0).getResultId().toString());
 //	assertEquals("lemma", sed.getSupportedLayers().get(1).getType().toString());
     }
 
@@ -157,7 +157,7 @@ public class ExistDbEndpointSearchEngineTest {
 	assertEquals("hits", riList.get(0).getAvailableDataViews().get(0).getIdentifier());
 	assertEquals("SEND_BY_DEFAULT", riList.get(0).getAvailableDataViews().get(0).getDeliveryPolicy().toString());
 	assertEquals("application/x-clarin-fcs-hits+xml", riList.get(0).getAvailableDataViews().get(0).getMimeType());
-	assertEquals("http://localhost:9090/exist/rest/db/ilc4clarin/data/panacea", riList.get(0).getLandingPageURI());
+	assertEquals("http://existdb.ilc4clarin.ilc.cnr.it/exist/rest/db/ilc4clarin/data/panacea", riList.get(0).getLandingPageURI());
 	assertTrue(riList.get(0).hasAvailableLayers());
 	assertEquals("word", riList.get(0).getAvailableLayers().get(0).getId());
 	assertEquals("text", riList.get(0).getAvailableLayers().get(0).getType());
