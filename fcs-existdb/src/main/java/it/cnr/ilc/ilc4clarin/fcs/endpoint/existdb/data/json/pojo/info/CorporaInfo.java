@@ -61,7 +61,7 @@ public class CorporaInfo {
         ObjectMapper mapper = new ObjectMapper();
 
         CorporaInfo ci = null;
-        final String wsString = "http://localhost:9090/exist/rest/db/ilc4clarin/queries/ilc4clarinse.xq?";
+        final String wsString = "http://existdb.ilc4clarin.ilc.cnr.it/exist/rest/db/ilc4clarin/queries/ilc4clarinse.xq?";
         final String queryString = "command=info&corpus=";
         //"ROMI,PAROLE";
         final String corporaValues = getCorpusParameterValues(corpora);
