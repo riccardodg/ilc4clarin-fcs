@@ -113,7 +113,7 @@ public class ServiceInfo {
         ObjectMapper mapper = new ObjectMapper();
 
         ServiceInfo si = null;
-        final String wsString = "http://localhost:9090/exist/rest/db/ilc4clarin/queries/ilc4clarinse.xq?";
+        final String wsString = "http://existdb.ilc4clarin.ilc.cnr.it/exist/rest/db/ilc4clarin/queries/ilc4clarinse.xq?";
         final String queryString = "command=info";
         try {
             URL ilc4clarise = new URL(wsString + queryString);
