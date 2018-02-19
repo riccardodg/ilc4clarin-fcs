@@ -27,6 +27,7 @@ import eu.clarin.sru.server.fcs.SimpleEndpointSearchEngineBase;
 import eu.clarin.sru.server.fcs.utils.SimpleEndpointDescriptionParser;
 import it.cnr.ilc.ilc4clarin.fcs.endpoint.existdb.data.json.pojo.info.CorporaInfo;
 import it.cnr.ilc.ilc4clarin.fcs.endpoint.existdb.data.json.pojo.info.ServiceInfo;
+import it.cnr.ilc.ilc4clarin.fcs.endpoint.existdb.data.json.pojo.query.Query;
 import it.cnr.ilc.ilc4clarin.fcs.endpoint.existdb.xquery.FCSToXQConverter;
 import java.io.File;
 import java.net.MalformedURLException;
@@ -345,6 +346,11 @@ public class ExistDbEndpointSearchEngine extends SimpleEndpointSearchEngineBase 
             query = FCSToXQConverter.makeXQueryFromCQL(q);
         }
         return null;
+    }
+    
+    // make query
+    protected Query makeQuery(final String cqpQuery, CorporaInfo openCorporaInfo, final int startRecord, final int maximumRecords) {
+            return null;
     }
     
 
