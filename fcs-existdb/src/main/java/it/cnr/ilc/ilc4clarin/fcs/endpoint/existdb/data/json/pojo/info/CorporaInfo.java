@@ -43,7 +43,7 @@ public class CorporaInfo {
     @JsonProperty("corporalist")
     private List<String> corporalist = new ArrayList<String>();
 
-    @JsonProperty("corpora")
+//    @JsonProperty("corpora")
     private List<Corpus> corpora = new ArrayList<Corpus>();
     
     
