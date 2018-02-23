@@ -193,6 +193,7 @@ public class ExistDbEndpointSearchEngineTest {
             }
         }
         System.err.println("CORPORA END");
+        System.err.println("values "+CorporaInfo.getCorpusParameterValues(existdbse.getExistDbCorpora()));
 
         System.err.println("CORPORA WITH HEY /db/ilc4clarin/data/panacea " + existdbse.getCorporaInfo().getCorpus("/db/ilc4clarin/data/panacea"));
     }
